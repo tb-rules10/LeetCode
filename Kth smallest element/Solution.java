@@ -1,9 +1,4 @@
 class Solution{
-    public static int kthSmallest(int[] arr, int l, int r, int k) 
-    {
-        qsort(arr, 0, arr.length-1);
-        return arr[k-1];
-    }
     static void swap(int[] arr, int i, int j){
         int t = arr[i];
         arr[i]=arr[j];
@@ -17,14 +12,17 @@ class Solution{
                 i++;
                 swap(arr, i,j);
             }
-        }swap(arr, i+1, high); 
-        return (i+1);
+        }swap(arr, i++, high); 
+        return (i);
     }
-    static void qsort(int[] arr, int low, int high){
-        if (low >= high)
-            return;
-        int pi = partition(arr,low,high);
-        qsort(arr,low,pi-1);
-        qsort(arr,pi+1,high);
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    {
+        int pi = partition(arr,l,r);
+        if (pi==k-1) 
+            return arr[pi];
+        else if(pi<k-1)
+            return kthSmallest(arr,l,pi-1,k);
+        else 
+            return kthSmallest(arr,pi+1,r,k);
     }
 }
