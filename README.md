@@ -1,2 +1,2 @@
 # LeetCode
-Problems solved by me on LeetCode, GFG and other platforms.
+Problems solved by me on LeetCode & GFG.
